@@ -104,19 +104,37 @@ export default function HomePage() {
 
 </div>
 
-  <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-    <h3 className="font-semibold text-lg">Research</h3>
-    <p className="text-gray-600">
-      Share and explore collaborative research across fields.
-    </p>
+  <div className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition">
+
+  <div className="flex justify-center mb-4">
+    <NyansapoIcon />
   </div>
 
-  <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-    <h3 className="font-semibold text-lg">Collaboration</h3>
-    <p className="text-gray-600">
-      Build partnerships grounded in collective knowledge.
-    </p>
+  <h3 className="font-semibold text-lg text-center">
+    Research
+  </h3>
+
+  <p className="text-gray-600 text-center">
+    Share and explore collaborative research across disciplines.
+  </p>
+
+</div>
+
+  <div className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition">
+
+  <div className="flex justify-center mb-4">
+    <NyansapoIcon />
   </div>
+
+  <h3 className="font-semibold text-lg text-center">
+    Collaboration
+  </h3>
+
+  <p className="text-gray-600 text-center">
+    Build partnerships grounded in collective knowledge.
+  </p>
+
+</div>
 
 </section>
 
