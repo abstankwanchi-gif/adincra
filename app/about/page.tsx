@@ -7,7 +7,7 @@ export default function AboutPage() {
         <div className="p-6 space-y-6 max-w-3xl mx-auto">
             {/* NAVBAR */}
 {/* NAVBAR */}
-<nav className="flex items-center justify-between pb-4 border-b">
+<nav className="flex items-center justify-between py-4 border-b">
 
   <Link href="/">
     <span className="font-bold text-lg cursor-pointer">

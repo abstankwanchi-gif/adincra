@@ -7,7 +7,7 @@ export default function ContactPage() {
         <div className="p-6 space-y-6 max-w-xl mx-auto">
             {/* NAVBAR */}
 {/* NAVBAR */}
-<nav className="flex items-center justify-between pb-4 border-b">
+<nav className="flex items-center justify-between py-4 border-b">
 
   <Link href="/">
     <span className="font-bold text-lg cursor-pointer">
@@ -46,9 +46,9 @@ export default function ContactPage() {
           placeholder="How would you like to support ADINCRA?"
         />
 
-        <button className="px-4 py-2 bg-black text-white">
-          Submit
-        </button>
+        <button className="px-5 py-2 rounded-xl text-white bg-black">
+  Submit Inquiry
+</button>
       </form>
 
         <Link href="/">
