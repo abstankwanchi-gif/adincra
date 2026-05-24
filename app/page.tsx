@@ -11,9 +11,10 @@ const COLORS = {
 
 function AdinkraheneIcon() {
   return (
-    <svg viewBox="0 0 64 64" className="w-8 h-8">
-      <circle cx="32" cy="32" r="16" fill="none" stroke={COLORS.gold} strokeWidth="4" />
-      <circle cx="32" cy="32" r="6" fill={COLORS.gold} />
+    
+<svg viewBox="0 0 64 64" className="w-10 h-10">
+      <circle cx="32" cy="32" r="16" fill="none" stroke="#C99700" strokeWidth="4" />
+      <circle cx="32" cy="32" r="6" fill="#C99700" />
     </svg>
   );
 }
@@ -26,10 +27,13 @@ export default function HomePage() {
 <nav className="flex items-center justify-between py-4 border-b">
 
   <Link href="/">
-    <span className="font-bold text-lg cursor-pointer">
+  <div className="flex items-center gap-2 cursor-pointer">
+    <AdinkraheneIcon />
+    <span className="font-bold text-lg tracking-wide">
       ADINCRA
     </span>
-  </Link>
+  </div>
+</Link>
 
   <div className="flex gap-6 text-sm font-medium">
     <Link href="/"><span>Home</span></Link>
@@ -46,7 +50,11 @@ export default function HomePage() {
     ADINCRA
   </h1>
 
-  <p className="max-w-xl mx-auto text-gray-700">
+<div className="flex justify-center">
+    <AdinkraheneIcon />
+  </div>
+
+<p className="max-w-xl mx-auto text-gray-700">
     African Diasporic and Interdisciplinary Network for Collaborative Research and Action — a platform connecting knowledge, community, and transformation.
   </p>
 </section>
