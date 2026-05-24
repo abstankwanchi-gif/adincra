@@ -19,6 +19,15 @@ function AdinkraheneIcon() {
   );
 }
 
+function NyansapoIcon() {
+  return (
+    <svg viewBox="0 0 64 64" className="w-10 h-10">
+      <rect x="16" y="16" width="32" height="32" fill="none" stroke="#C99700" strokeWidth="4" />
+      <circle cx="32" cy="32" r="6" fill="#C99700" />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   return (
     <div className="p-6 space-y-12 bg-white min-h-screen text-black">
@@ -79,12 +88,21 @@ export default function HomePage() {
 {/* FEATURES / GRID */}
 <section className="py-12">
 
-  <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-    <h3 className="font-semibold text-lg">Profiles</h3>
-    <p className="text-gray-600">
-      Connect with interdisciplinary scholars and practitioners.
-    </p>
+  <div className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition">
+
+  <div className="flex justify-center mb-4">
+    <NyansapoIcon />
   </div>
+
+  <h3 className="font-semibold text-lg text-center">
+    Profiles
+  </h3>
+
+  <p className="text-gray-600 text-center">
+    Connect with interdisciplinary scholars and practitioners.
+  </p>
+
+</div>
 
   <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
     <h3 className="font-semibold text-lg">Research</h3>
