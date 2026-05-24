@@ -27,16 +27,15 @@ export default function HomePage() {
 <nav className="flex items-center justify-between py-4 border-b">
 
   <Link href="/">
-  <div className="flex items-center gap-2 cursor-pointer">
-    <AdinkraheneIcon />
-    <span className="font-bold text-lg tracking-wide">
-      ADINCRA
-    </span>
-  </div>
-</Link>
+    <div className="flex items-center gap-2 cursor-pointer">
+      <AdinkraheneIcon />
+      <span className="font-bold text-lg tracking-wide">
+        ADINCRA
+      </span>
+    </div>
+  </Link>
 
-  <div className="flex gap-6 text-sm font-medium">
-    <Link href="/"><span>Home</span></Link>
+  <div className="flex gap-4 text-sm font-medium">
     <Link href="/profile"><span>Profile</span></Link>
     <Link href="/about"><span>About</span></Link>
     <Link href="/contact"><span>Support</span></Link>
