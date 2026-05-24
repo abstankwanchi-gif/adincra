@@ -28,6 +28,16 @@ function NyansapoIcon() {
   );
 }
 
+function SankofaIcon() {
+  return (
+    <svg viewBox="0 0 64 64" className="w-10 h-10">
+      <path d="M20 32 C20 20, 44 20, 44 32 C44 44, 32 48, 32 48" 
+            fill="none" stroke="#C99700" strokeWidth="4" />
+      <circle cx="32" cy="20" r="5" fill="#C99700" />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   return (
     <div className="p-6 space-y-12 bg-white min-h-screen text-black">
@@ -77,6 +87,9 @@ export default function HomePage() {
 
 {/* MISSION */}
 <section className="max-w-3xl mx-auto text-center py-12 space-y-6">
+  <div className="flex justify-center mb-4">
+  <SankofaIcon />
+</div>
   <h2 className="text-2xl font-semibold">Our Mission</h2>
 
   <p className="text-gray-600">
