@@ -10,30 +10,32 @@ const COLORS = {
 };
 
 function AdinkraheneIcon() {
-  return (
-    
-<svg viewBox="0 0 64 64" className="w-10 h-10">
-      <circle cx="32" cy="32" r="16" fill="none" stroke="#C99700" strokeWidth="4" />
-      <circle cx="32" cy="32" r="6" fill="#C99700" />
-    </svg>
+  return (    
+<svg viewBox="0 0 64 64" className="w-12 h-12">
+      <circle cx="32" cy="32" r="18" fill="none" stroke="#C99700" strokeWidth="3" />
+      <circle cx="32" cy="32" r="10" fill="none" stroke="#C99700" strokeWidth="3" />
+      <circle cx="32" cy="32" r="4" fill="#C99700" />
+</svg>
   );
 }
 
 function NyansapoIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="w-10 h-10">
-      <rect x="16" y="16" width="32" height="32" fill="none" stroke="#C99700" strokeWidth="4" />
-      <circle cx="32" cy="32" r="6" fill="#C99700" />
+  return (    
+<svg viewBox="0 0 64 64" className="w-10 h-10">
+      <rect x="16" y="16" width="32" height="32" fill="none" stroke="#C99700" strokeWidth="3" />
+      <line x1="32" y1="16" x2="32" y2="48" stroke="#C99700" strokeWidth="3" />
+      <line x1="16" y1="32" x2="48" y2="32" stroke="#C99700" strokeWidth="3" />
+      <circle cx="32" cy="32" r="4" fill="#C99700" />
     </svg>
   );
 }
 
 function SankofaIcon() {
-  return (
-    <svg viewBox="0 0 64 64" className="w-10 h-10">
-      <path d="M20 32 C20 20, 44 20, 44 32 C44 44, 32 48, 32 48" 
-            fill="none" stroke="#C99700" strokeWidth="4" />
-      <circle cx="32" cy="20" r="5" fill="#C99700" />
+  return (  
+<svg viewBox="0 0 64 64" className="w-10 h-10">
+      <path d="M20 36 C20 20 44 20 44 36 C44 48 30 50 30 50" 
+            fill="none" stroke="#C99700" strokeWidth="3" />
+      <circle cx="44" cy="20" r="5" fill="#C99700" />
     </svg>
   );
 }
