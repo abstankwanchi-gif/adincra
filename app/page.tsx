@@ -90,7 +90,7 @@ export default function HomePage() {
 </Link>
 
 {/* MISSION */}
-<section className="max-w-3xl mx-auto text-center py-12 space-y-6">
+
 <motion.section
   initial={{ opacity: 0, y: 10 }}
   whileInView={{ opacity: 1, y: 0 }}
@@ -98,19 +98,21 @@ export default function HomePage() {
   viewport={{ once: true }}
   className="max-w-3xl mx-auto text-center py-12 space-y-6"
 >
-</motion.section>
 
   <div className="flex justify-center mb-4">
-  <SankofaIcon />
-</div>
+    <SankofaIcon />
+  </div>
+
   <h2 className="text-2xl font-semibold tracking-wide text-[#C99700]">
-  Our Mission
-</h2>
+    Our Mission
+  </h2>
+
   <p className="text-gray-700 leading-relaxed">
     ADINCRA creates a space where knowledge systems rooted in African traditions
     and global scholarship meet to foster collaboration, reflection, and impactful research.
   </p>
-</section>
+
+</motion.section>
 
 {/* FEATURES / GRID */}
 <section className="py-12">
@@ -187,22 +189,28 @@ export default function HomePage() {
   transition={{ duration: 0.6 }}
   className="text-center py-12 space-y-6"
 >
+
+  <h2 className="text-2xl font-semibold">
+    Support ADINCRA
+  </h2>
+
+  <p className="max-w-lg mx-auto text-gray-700 leading-relaxed">
+    Join us as a donor, volunteer, or partner in building a global research network grounded in collaboration and knowledge.
+  </p>
+
+  <Link href="/contact">
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
+      style={{ backgroundColor: "#C99700" }}
+    >
+      Get Involved
+    </motion.button>
+  </Link>
+
 </motion.section>
-        <h2 className="text-2xl font-semibold">Support ADINCRA</h2>
-        <p className="max-w-lg mx-auto text-gray-700 leading-relaxed">
-          Join us as a donor, volunteer, or partner in building a global research network grounded in collaboration and knowledge.
-        </p>
-        <Link href="/contact">
-          
-<motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.97 }}
-  className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
-  style={{ backgroundColor: "#C99700" }}>
-  Get Involved
-</motion.button>
-        </Link>
-      </section>
+
 
       {/* CONTACT PREVIEW */}
       <section className="max-w-xl mx-auto py-12 space-y-6">
