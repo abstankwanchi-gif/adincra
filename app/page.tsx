@@ -90,13 +90,7 @@ export default function HomePage() {
 </Link>
 
 {/* MISSION */}
-Under the MISSION section I found the following code:
-
-<section className="max-w-3xl mx-auto text-center py-12 space-y-6"> instead of 
-<section className="text-center py-12 space-y-6">
-
-Should I replace it instead with:
-
+<section className="max-w-3xl mx-auto text-center py-12 space-y-6">
 <motion.section
   initial={{ opacity: 0, y: 10 }}
   whileInView={{ opacity: 1, y: 0 }}
