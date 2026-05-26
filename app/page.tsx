@@ -65,36 +65,45 @@ export default function HomePage() {
 </nav>
 
       {/* HERO */}
-      <section className="text-center space-y-6 py-12">
+      
+<motion.section
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  className="text-center py-12 space-y-6"
+>
+
   <h1 className="text-5xl font-bold tracking-wider">
     ADINCRA
   </h1>
 
-<div className="flex justify-center">
+  <div className="flex justify-center">
     <AdinkraheneIcon />
   </div>
 
-<p className="max-w-xl mx-auto text-gray-700">
+  <p className="max-w-xl mx-auto text-gray-700">
     African Diasporic and Interdisciplinary Network for Collaborative Research and Action — a platform connecting knowledge, community, and transformation.
   </p>
-</section>
-<Link href="/contact">
-  
-<motion.button
-  whileHover={{ scale: 1.05 }}
-  whileTap={{ scale: 0.97 }}
-  className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
-  style={{ backgroundColor: "#C99700" }}>
-    Join ADINCRA
-  </motion.button>
-</Link>
+
+  <Link href="/contact">
+    <motion.button
+      whileHover={{ scale: 1.05, y: -4 }}
+      whileTap={{ scale: 0.97 }}
+      className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
+      style={{ backgroundColor: "#C99700" }}
+    >
+      Join ADINCRA
+    </motion.button>
+  </Link>
+
+</motion.section>
 
 {/* MISSION */}
 
 <motion.section
   initial={{ opacity: 0, y: 10 }}
   whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5 }}
+  transition={{ duration: 0.5, delay: 0.1 }}
   viewport={{ once: true }}
   className="max-w-3xl mx-auto text-center py-12 space-y-6"
 >
@@ -120,7 +129,7 @@ export default function HomePage() {
 </div>
   
 <motion.div
-  whileHover={{ scale: 1.03 }}
+  whileHover={{ scale: 1.03, y: -4 }}
   transition={{ type: "spring", stiffness: 200 }}
   className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
 >
@@ -140,7 +149,7 @@ export default function HomePage() {
 </motion.div>
 
  <motion.div
-  whileHover={{ scale: 1.03 }}
+  whileHover={{ scale: 1.03, y: -4 }}
   transition={{ type: "spring", stiffness: 200 }}
   className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
 >
@@ -160,7 +169,7 @@ export default function HomePage() {
 </motion.div>
 
 <motion.div
-  whileHover={{ scale: 1.03 }}
+  whileHover={{ scale: 1.03, y: -4 }}
   transition={{ type: "spring", stiffness: 200 }}
   className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
 >
@@ -186,7 +195,7 @@ export default function HomePage() {
 <motion.section
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
+  transition={{ duration: 0.5, delay: 0.2 }}
   className="text-center py-12 space-y-6"
 >
 
@@ -200,7 +209,7 @@ export default function HomePage() {
 
   <Link href="/contact">
     <motion.button
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.05, y: -4 }}
       whileTap={{ scale: 0.97 }}
       className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
       style={{ backgroundColor: "#C99700" }}
@@ -220,7 +229,7 @@ export default function HomePage() {
           <input className="w-full border p-2" placeholder="Email" />
           <textarea className="w-full border p-2" placeholder="Message" />
           <motion.button
-  whileHover={{ scale: 1.05 }}
+  whileHover={{ scale: 1.05, y: -4 }}
   whileTap={{ scale: 0.97 }}
   className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
   style={{ backgroundColor: "#C99700" }}>
