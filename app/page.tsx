@@ -66,7 +66,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="text-center space-y-6 py-12">
-  <h1 className="text-5xl font-bold tracking-wide">
+  <h1 className="text-5xl font-bold tracking-wider">
     ADINCRA
   </h1>
 
@@ -79,10 +79,8 @@ export default function HomePage() {
   </p>
 </section>
 <Link href="/contact">
-  <button
-    className="px-5 py-2 rounded-xl text-white"
-    style={{ backgroundColor: "#C99700" }}
-  >
+  <button className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
+  style={{ backgroundColor: "#C99700" }}>
     Join ADINCRA
   </button>
 </Link>
@@ -92,9 +90,10 @@ export default function HomePage() {
   <div className="flex justify-center mb-4">
   <SankofaIcon />
 </div>
-  <h2 className="text-2xl font-semibold">Our Mission</h2>
-
-  <p className="text-gray-600">
+  <h2 className="text-2xl font-semibold tracking-wide text-[#C99700]">
+  Our Mission
+</h2>
+  <p className="text-gray-700 leading-relaxed">
     ADINCRA creates a space where knowledge systems rooted in African traditions
     and global scholarship meet to foster collaboration, reflection, and impactful research.
   </p>
@@ -102,7 +101,8 @@ export default function HomePage() {
 
 {/* FEATURES / GRID */}
 <section className="py-12">
-
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+</div>
   <div className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition">
 
   <div className="flex justify-center mb-4">
@@ -113,7 +113,7 @@ export default function HomePage() {
     Profiles
   </h3>
 
-  <p className="text-gray-600 text-center">
+  <p className="text-gray-700 leading-relaxed text-center">
     Connect with interdisciplinary scholars and practitioners.
   </p>
 
@@ -129,7 +129,7 @@ export default function HomePage() {
     Research
   </h3>
 
-  <p className="text-gray-600 text-center">
+  <p className="text-gray-700 leading-relaxed text-center">
     Share and explore collaborative research across disciplines.
   </p>
 
@@ -145,7 +145,7 @@ export default function HomePage() {
     Collaboration
   </h3>
 
-  <p className="text-gray-600 text-center">
+  <p className="text-gray-700 leading-relaxed text-center">
     Build partnerships grounded in collective knowledge.
   </p>
 
@@ -156,11 +156,11 @@ export default function HomePage() {
       {/* SUPPORT CTA */}
       <section className="text-center py-12 space-y-6">
         <h2 className="text-2xl font-semibold">Support ADINCRA</h2>
-        <p className="max-w-lg mx-auto text-gray-600">
+        <p className="max-w-lg mx-auto text-gray-700 leading-relaxed">
           Join us as a donor, volunteer, or partner in building a global research network grounded in collaboration and knowledge.
         </p>
         <Link href="/contact">
-          <button className="px-5 py-2 rounded-xl text-white"
+          <button className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
   style={{ backgroundColor: "#C99700" }}>
   Get Involved
 </button>
@@ -174,7 +174,8 @@ export default function HomePage() {
           <input className="w-full border p-2" placeholder="Name" />
           <input className="w-full border p-2" placeholder="Email" />
           <textarea className="w-full border p-2" placeholder="Message" />
-          <button className="px-4 py-2" style={{ backgroundColor: COLORS.gold, color: "white" }}>
+          <button className="px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
+  style={{ backgroundColor: "#C99700" }}>
             Send Message
           </button>
         </form>
