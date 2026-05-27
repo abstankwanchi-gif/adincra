@@ -37,13 +37,11 @@ export default function ContactPage() {
 
   <nav className="flex items-center justify-between py-4 border-b">
 
-  <Link href="/">
-    <div className="flex items-center gap-2 cursor-pointer">
+  <Link href="/" className="flex items-center gap-2 cursor-pointer">
       <AdinkraheneIcon />
       <span className="font-bold text-lg tracking-wide">
         ADINCRA
       </span>
-    </div>
   </Link>
 
   <div className="flex gap-4 text-sm font-medium">
@@ -55,7 +53,28 @@ export default function ContactPage() {
 </nav>
 
   return (
-    <div className="max-w-xl mx-auto py-12 space-y-6">
+  <div className="p-6 space-y-12 bg-white min-h-screen text-black">
+
+    {/* NAVBAR */}
+    <nav className="flex items-center justify-between py-4 border-b">
+
+      <Link href="/" className="flex items-center gap-2 cursor-pointer">
+        <AdinkraheneIcon />
+        <span className="font-bold text-lg tracking-wide">
+          ADINCRA
+        </span>
+      </Link>
+
+      <div className="flex gap-4 text-sm font-medium">
+        <Link href="/"><span>Home</span></Link>
+        <Link href="/profile"><span>Profile</span></Link>
+        <Link href="/about"><span>About</span></Link>
+      </div>
+
+    </nav>
+
+    {/* PAGE CONTENT */}
+    <div className="max-w-xl mx-auto space-y-6">
 
       <h1 className="text-3xl font-bold text-center">
         Join ADINCRA
@@ -65,9 +84,9 @@ export default function ContactPage() {
         Submit your academic or professional profile to become part of the ADINCRA research network.
       </p>
 
+      {/* FORM */}
       <form onSubmit={handleSubmit} className="space-y-4">
 
-        {/* Name */}
         <input
           type="text"
           name="name"
@@ -78,7 +97,6 @@ export default function ContactPage() {
           required
         />
 
-        {/* Field */}
         <input
           type="text"
           name="field"
@@ -89,7 +107,6 @@ export default function ContactPage() {
           required
         />
 
-        {/* Institution */}
         <input
           type="text"
           name="institution"
@@ -100,20 +117,18 @@ export default function ContactPage() {
           required
         />
 
-        {/* Publications */}
         <textarea
           name="publications"
-          placeholder="Publications / Projects (list or describe)"
+          placeholder="Publications / Projects"
           value={form.publications}
           onChange={handleChange}
           className="w-full p-3 border rounded-lg"
           rows={3}
         />
 
-        {/* Bio */}
         <textarea
           name="bio"
-          placeholder="Research Interests / Short Bio"
+          placeholder="Research Interests / Bio"
           value={form.bio}
           onChange={handleChange}
           className="w-full p-3 border rounded-lg"
@@ -121,17 +136,15 @@ export default function ContactPage() {
           required
         />
 
-        {/* Profile Image (URL for now) */}
         <input
           type="text"
           name="image"
-          placeholder="Profile Image URL (optional)"
+          placeholder="Profile Image URL"
           value={form.image}
           onChange={handleChange}
           className="w-full p-3 border rounded-lg"
         />
 
-        {/* Submit */}
         <button
           type="submit"
           className="w-full px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
@@ -143,5 +156,7 @@ export default function ContactPage() {
       </form>
 
     </div>
-  );
+
+  </div>
+);
 }
