@@ -124,70 +124,59 @@ export default function HomePage() {
 </motion.section>
 
 {/* FEATURES / GRID */}
+
 <section className="py-12">
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-</div>
-  
-<motion.div
-  whileHover={{ scale: 1.03, y: -4 }}
-  transition={{ type: "spring", stiffness: 200 }}
-  className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
->
 
-  <div className="flex justify-center mb-4">
-    <NyansapoIcon />
+    <motion.div
+      whileHover={{ scale: 1.05, y: -4 }}
+      transition={{ type: "spring", stiffness: 200 }}
+      className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
+    >
+      <div className="flex justify-center mb-4">
+        <NyansapoIcon />
+      </div>
+      <h3 className="font-semibold text-lg text-center">
+        Profiles
+      </h3>
+      <p className="text-gray-700 leading-relaxed text-center">
+        Connect with interdisciplinary scholars and practitioners.
+      </p>
+    </motion.div>
+
+    <motion.div
+      whileHover={{ scale: 1.05, y: -4 }}
+      transition={{ type: "spring", stiffness: 200 }}
+      className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
+    >
+      <div className="flex justify-center mb-4">
+        <NyansapoIcon />
+      </div>
+      <h3 className="font-semibold text-lg text-center">
+        Research
+      </h3>
+      <p className="text-gray-700 leading-relaxed text-center">
+        Share and explore collaborative research across disciplines.
+      </p>
+    </motion.div>
+
+    <motion.div
+      whileHover={{ scale: 1.05, y: -4 }}
+      transition={{ type: "spring", stiffness: 200 }}
+      className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
+    >
+      <div className="flex justify-center mb-4">
+        <NyansapoIcon />
+      </div>
+      <h3 className="font-semibold text-lg text-center">
+        Collaboration
+      </h3>
+      <p className="text-gray-700 leading-relaxed text-center">
+        Build partnerships grounded in collective knowledge.
+      </p>
+    </motion.div>
+
   </div>
-
-  <h3 className="font-semibold text-lg text-center">
-    Profiles
-  </h3>
-
-  <p className="text-gray-700 leading-relaxed text-center">
-    Connect with interdisciplinary scholars and practitioners.
-  </p>
-
-</motion.div>
-
- <motion.div
-  whileHover={{ scale: 1.03, y: -4 }}
-  transition={{ type: "spring", stiffness: 200 }}
-  className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
->
-
-  <div className="flex justify-center mb-4">
-    <NyansapoIcon />
-  </div>
-
-  <h3 className="font-semibold text-lg text-center">
-    Research
-  </h3>
-
-  <p className="text-gray-700 leading-relaxed text-center">
-    Share and explore collaborative research across disciplines.
-  </p>
-
-</motion.div>
-
-<motion.div
-  whileHover={{ scale: 1.03, y: -4 }}
-  transition={{ type: "spring", stiffness: 200 }}
-  className="p-5 border rounded-2xl shadow-sm hover:shadow-md hover:border-yellow-600 transition"
->
-
-  <div className="flex justify-center mb-4">
-    <NyansapoIcon />
-  </div>
-
-  <h3 className="font-semibold text-lg text-center">
-    Collaboration
-  </h3>
-
-  <p className="text-gray-700 leading-relaxed text-center">
-    Build partnerships grounded in collective knowledge.
-  </p>
-
-</motion.div>
-
 </section>
 
       {/* SUPPORT CTA */}
