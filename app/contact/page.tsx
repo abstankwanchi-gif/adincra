@@ -1,61 +1,125 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [form, setForm] = useState({
+    name: "",
+    field: "",
+    institution: "",
+    publications: "",
+    bio: "",
+    image: "",
+  });
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    console.log("Submitted profile:", form);
+
+    alert("Profile submitted for review!");
+
+    setForm({
+      name: "",
+      field: "",
+      institution: "",
+      publications: "",
+      bio: "",
+      image: "",
+    });
+  }
+
   return (
-        <div className="p-6 space-y-6 max-w-xl mx-auto">
-            {/* NAVBAR */}
-{/* NAVBAR */}
-<nav className="flex items-center justify-between py-4 border-b">
+    <div className="max-w-xl mx-auto py-12 space-y-6">
 
-  <Link href="/">
-    <span className="font-bold text-lg cursor-pointer">
-      ADINCRA
-    </span>
-  </Link>
+      <h1 className="text-3xl font-bold text-center">
+        Join ADINCRA
+      </h1>
 
-  <div className="flex gap-4 text-sm font-medium">
-    <Link href="/"><span>Home</span></Link>
-    <Link href="/profile"><span>Profile</span></Link>
-    <Link href="/about"><span>About</span></Link>
-    <Link href="/contact"><span>Support</span></Link>
-  </div>
-
-</nav>
-      <h1 className="text-3xl font-bold">Contact & Support</h1>
-
-      <p className="text-gray-600">
-        If you would like to support ADINCRA as a donor, volunteer, or partner,
-        please use the form below.
+      <p className="text-center text-gray-700">
+        Submit your academic or professional profile to become part of the ADINCRA research network.
       </p>
 
-      <form className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-4">
+
+        {/* Name */}
         <input
-          className="w-full border p-2"
-          placeholder="Name"
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={form.name}
+          onChange={handleChange}
+          className="w-full p-3 border rounded-lg"
+          required
         />
 
+        {/* Field */}
         <input
-          className="w-full border p-2"
-          placeholder="Email"
+          type="text"
+          name="field"
+          placeholder="Field of Work / Study"
+          value={form.field}
+          onChange={handleChange}
+          className="w-full p-3 border rounded-lg"
+          required
         />
 
+        {/* Institution */}
+        <input
+          type="text"
+          name="institution"
+          placeholder="Institutional Affiliation"
+          value={form.institution}
+          onChange={handleChange}
+          className="w-full p-3 border rounded-lg"
+          required
+        />
+
+        {/* Publications */}
         <textarea
-          className="w-full border p-2"
-          placeholder="How would you like to support ADINCRA?"
+          name="publications"
+          placeholder="Publications / Projects (list or describe)"
+          value={form.publications}
+          onChange={handleChange}
+          className="w-full p-3 border rounded-lg"
+          rows={3}
         />
 
-        <button className="px-5 py-2 rounded-xl text-white bg-black">
-  Submit Inquiry
-</button>
-      </form>
+        {/* Bio */}
+        <textarea
+          name="bio"
+          placeholder="Research Interests / Short Bio"
+          value={form.bio}
+          onChange={handleChange}
+          className="w-full p-3 border rounded-lg"
+          rows={4}
+          required
+        />
 
-        <Link href="/">
-  <span className="text-blue-600 cursor-pointer">
-    ← Back to Home
-  </span>
-</Link>
+        {/* Profile Image (URL for now) */}
+        <input
+          type="text"
+          name="image"
+          placeholder="Profile Image URL (optional)"
+          value={form.image}
+          onChange={handleChange}
+          className="w-full p-3 border rounded-lg"
+        />
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
+          style={{ backgroundColor: "#C99700" }}
+        >
+          Submit Profile
+        </button>
+
+      </form>
 
     </div>
   );
