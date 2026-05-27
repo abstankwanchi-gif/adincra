@@ -1,5 +1,6 @@
 "use client";
 
+import AdinkraheneIcon from "./components/AdinkraheneIcon";
 import Link from "next/link";
 import { motion } from "framer-motion";
 

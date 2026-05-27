@@ -1,5 +1,7 @@
 "use client";
 
+import AdinkraheneIcon from "../components/AdinkraheneIcon";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function ContactPage() {
@@ -32,6 +34,25 @@ export default function ContactPage() {
       image: "",
     });
   }
+
+  <nav className="flex items-center justify-between py-4 border-b">
+
+  <Link href="/">
+    <div className="flex items-center gap-2 cursor-pointer">
+      <AdinkraheneIcon />
+      <span className="font-bold text-lg tracking-wide">
+        ADINCRA
+      </span>
+    </div>
+  </Link>
+
+  <div className="flex gap-4 text-sm font-medium">
+    <Link href="/profile"><span>Profile</span></Link>
+    <Link href="/about"><span>About</span></Link>
+    <Link href="/contact"><span>Support</span></Link>
+  </div>
+
+</nav>
 
   return (
     <div className="max-w-xl mx-auto py-12 space-y-6">
