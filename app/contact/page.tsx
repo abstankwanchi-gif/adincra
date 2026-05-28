@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "../components/Navbar";
 import AdinkraheneIcon from "../components/AdinkraheneIcon";
 import Link from "next/link";
 import { useState } from "react";
@@ -56,22 +57,7 @@ export default function ContactPage() {
   <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
     {/* NAVBAR */}
-    <nav className="flex items-center justify-between py-4 border-b">
-
-      <Link href="/" className="flex items-center gap-2 cursor-pointer">
-        <AdinkraheneIcon />
-        <span className="font-bold text-lg tracking-wide">
-          ADINCRA
-        </span>
-      </Link>
-
-      <div className="flex gap-4 text-sm font-medium">
-        <Link href="/"><span>Home</span></Link>
-        <Link href="/profile"><span>Profile</span></Link>
-        <Link href="/about"><span>About</span></Link>
-      </div>
-
-    </nav>
+    <Navbar />
 
     {/* PAGE CONTENT */}
     <div className="max-w-xl mx-auto space-y-6">
