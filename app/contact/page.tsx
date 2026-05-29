@@ -1,5 +1,6 @@
 "use client";
 
+import { supabase } from "../lib/supabaseClient";
 import Navbar from "../components/Navbar";
 import AdinkraheneIcon from "../components/AdinkraheneIcon";
 import Link from "next/link";
@@ -19,12 +20,26 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();
 
-    console.log("Submitted profile:", form);
+  const { error } = await supabase.from("profiles").insert([
+    {
+      name: form.name,
+      field: form.field,
+      institution: form.institution,
+      publications: form.publications,
+      bio: form.bio,
+      image: form.image,
+      status: "pending",
+    },
+  ]);
 
-    alert("Profile submitted for review!");
+  if (error) {
+    console.error(error);
+    alert("Error submitting profile.");
+  } else {
+    alert("Profile submitted successfully!");
 
     setForm({
       name: "",
@@ -35,6 +50,7 @@ export default function ContactPage() {
       image: "",
     });
   }
+}
 
   <nav className="flex items-center justify-between py-4 border-b">
 
