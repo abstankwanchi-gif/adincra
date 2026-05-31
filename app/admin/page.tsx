@@ -95,6 +95,26 @@ if (!authenticated) {
   );
 }
 
+async function deleteProfile(id: number) {
+  console.log("Deleting ID:", id);
+
+  const confirmDelete = confirm("Are you sure you want to delete this profile?");
+  if (!confirmDelete) return;
+
+  const { error } = await supabase
+    .from("profiles")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    alert("Error deleting profile");
+  } else {
+    alert("Profile deleted successfully");
+    getPendingProfiles(); // refresh list
+  }
+}
+
 return (
   <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
@@ -139,7 +159,7 @@ return (
                 <strong>Bio:</strong> {profile.bio}
               </p>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 mt-3">
 
   <button
     onClick={() => approveProfile(profile.id)}
@@ -155,6 +175,14 @@ return (
     style={{ backgroundColor: "#D64545" }}
   >
     Reject
+  </button>
+
+  <button
+    onClick={() => deleteProfile(profile.id)}
+    className="px-4 py-2 rounded-lg text-white"
+    style={{ backgroundColor: "#555555" }}
+  >
+    Delete
   </button>
 
 </div>
