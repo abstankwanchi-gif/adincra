@@ -5,8 +5,12 @@ import { supabase } from "../lib/supabaseClient";
 import Navbar from "../components/Navbar";
 
 export default function ProfilesPage() {
-  const [profiles, setProfiles] = useState<any[]>([]);
+  const [selectedField, setSelectedField] = useState("");
+const [selectedInstitution, setSelectedInstitution] = useState("");
+const [profiles, setProfiles] = useState<any[]>([]);
 const [searchTerm, setSearchTerm] = useState("");
+const fields = [...new Set(profiles.map((p: any) => p.field))];
+const institutions = [...new Set(profiles.map((p: any) => p.institution))];
 
   useEffect(() => {
     getProfiles();
@@ -34,7 +38,9 @@ const [searchTerm, setSearchTerm] = useState("");
         ADINCRA Research Network
       </h1>
 
-      <div className="flex justify-center mt-4">
+      <div className="flex flex-col md:flex-row gap-3 justify-center mt-4">
+
+  {/* 🔍 Search box */}
   <input
     type="text"
     placeholder="Search by name, field, or institution..."
@@ -42,7 +48,37 @@ const [searchTerm, setSearchTerm] = useState("");
     onChange={(e) => setSearchTerm(e.target.value)}
     className="w-full max-w-md border p-2 rounded"
   />
+
+  {/* 🎓 Field dropdown */}
+  <select
+    value={selectedField}
+    onChange={(e) => setSelectedField(e.target.value)}
+    className="border p-2 rounded"
+  >
+    <option value="">All Fields</option>
+    {fields.map((field, i) => (
+      <option key={i} value={field}>
+        {field}
+      </option>
+    ))}
+  </select>
+
+  {/* 🏛️ Institution dropdown */}
+  <select
+    value={selectedInstitution}
+    onChange={(e) => setSelectedInstitution(e.target.value)}
+    className="border p-2 rounded"
+  >
+    <option value="">All Institutions</option>
+    {institutions.map((inst, i) => (
+      <option key={i} value={inst}>
+        {inst}
+      </option>
+    ))}
+  </select>
+
 </div>
+
       <p className="text-center text-gray-700">
         Explore approved scholars and researchers within the ADINCRA network.
       </p>
@@ -53,11 +89,18 @@ const [searchTerm, setSearchTerm] = useState("");
   .filter((profile: any) => {
     const term = searchTerm.toLowerCase();
 
-    return (
+    const matchesSearch =
       profile.name?.toLowerCase().includes(term) ||
       profile.field?.toLowerCase().includes(term) ||
-      profile.institution?.toLowerCase().includes(term)
-    );
+      profile.institution?.toLowerCase().includes(term);
+
+    const matchesField =
+      selectedField === "" || profile.field === selectedField;
+
+    const matchesInstitution =
+      selectedInstitution === "" || profile.institution === selectedInstitution;
+
+    return matchesSearch && matchesField && matchesInstitution;
   })
   .map((profile: any, index: number) => (
 
