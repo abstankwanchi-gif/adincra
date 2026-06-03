@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import Navbar from "../components/Navbar";
+import { useRouter } from "next/navigation";
 
 export default function AdminPage() {
   const [profiles, setProfiles] = useState<any[]>([]);
+  const router = useRouter();
 
-  const [authenticated, setAuthenticated] = useState(false);
-const [password, setPassword] = useState("");
-useEffect(() => {
-    getPendingProfiles();
-  }, []);
+  useEffect(() => {
+  checkUser();
+}, []);
 
   async function getPendingProfiles() {
     const { data, error } = await supabase
@@ -26,6 +26,15 @@ useEffect(() => {
     }
   }
 
+  async function checkUser() {
+  const { data } = await supabase.auth.getUser();
+
+  if (!data.user) {
+    router.push("/login");
+  } else {
+    getPendingProfiles();
+  }
+}
   async function approveProfile(id: number) {
   console.log("Attempting to approve ID:", id);
 
@@ -63,36 +72,6 @@ useEffect(() => {
     alert("Profile rejected");
     getPendingProfiles();
   }
-}
-function handleLogin() {
-  if (password === "admin1725") {
-    setAuthenticated(true);
-  } else {
-    alert("Incorrect password");
-  }
-}
-
-if (!authenticated) {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-4">
-      <h1 className="text-2xl font-bold">Admin Access</h1>
-
-      <input
-        type="password"
-        placeholder="Enter admin password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="border p-2 rounded"
-      />
-
-      <button
-        onClick={handleLogin}
-        className="px-4 py-2 bg-black text-white rounded"
-      >
-        Login
-      </button>
-    </div>
-  );
 }
 
 async function deleteProfile(id: number) {
