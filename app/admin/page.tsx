@@ -27,14 +27,38 @@ export default function AdminPage() {
   }
 
   async function checkUser() {
-  const { data } = await supabase.auth.getUser();
+  const { data: userData } = await supabase.auth.getUser();
 
-  if (!data.user) {
+  // ✅ Step 1: Not logged in
+  if (!userData.user) {
     router.push("/login");
-  } else {
-    getPendingProfiles();
+    return;
   }
+
+  // ✅ Step 2: Check role in users table
+  const { data: userRole, error } = await supabase
+    .from("users")
+    .select("role")
+    .eq("id", userData.user.id)
+    .single();
+
+  if (error || !userRole) {
+    console.error("Role fetch error:", error);
+    router.push("/");
+    return;
+  }
+
+  // ✅ Step 3: Allow only admins
+  if (userRole.role !== "admin") {
+    alert("Access denied");
+    router.push("/");
+    return;
+  }
+
+  // ✅ Step 4: If admin, load data
+  getPendingProfiles();
 }
+
   async function approveProfile(id: number) {
   console.log("Attempting to approve ID:", id);
 
