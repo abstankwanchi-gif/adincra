@@ -94,12 +94,31 @@ async function deleteProfile(id: number) {
   }
 }
 
+async function handleLogout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error(error);
+  }
+
+  router.push("/login");
+}
+
 return (
   <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
     <Navbar />
 
-    <h1 className="text-3xl font-bold text-center">
+    <div className="flex justify-end">
+  <button
+    onClick={handleLogout}
+    className="px-4 py-2 bg-black text-white rounded"
+  >
+    Logout
+  </button>
+</div>
+
+<h1 className="text-3xl font-bold text-center">
       Moderation Dashboard
     </h1>
 
