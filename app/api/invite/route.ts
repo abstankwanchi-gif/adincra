@@ -9,12 +9,8 @@ export async function POST(req: Request) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
 
-    // ✅ Step 1: Create user
-    const { data, error } = await supabase.auth.admin.createUser({
-  email,
-  password: "TempPassword123!",
-  email_confirm: true,
-});
+    // ✅ Step 1: Invite user
+   const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
 
 let user = data?.user;
 
