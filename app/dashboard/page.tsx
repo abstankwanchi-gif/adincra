@@ -1,0 +1,66 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import { useRouter } from "next/navigation";
+
+export default function DashboardPage() {
+  const [profile, setProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
+
+  async function loadProfile() {
+    console.log("Loading dashboard...");
+
+    const { data: userData } = await supabase.auth.getUser();
+
+    if (!userData.user) {
+      console.log("No user logged in");
+      router.push("/login");
+      return;
+    }
+
+    const userId = userData.user.id;
+    console.log("User ID:", userId);
+
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("owner_id", userId)
+      .maybeSingle();
+
+    if (error) {
+      console.error("Profile fetch error:", error);
+    }
+
+    console.log("Profile data:", data);
+
+    setProfile(data);
+    setLoading(false);
+  }
+
+  return (
+    <div className="min-h-screen p-6 space-y-6">
+      <h1 className="text-3xl font-bold">User Dashboard</h1>
+
+      {loading && <p>Loading profile...</p>}
+
+      {!loading && !profile && (
+        <p>No profile found. Please contact admin or create one.</p>
+      )}
+
+      {!loading && profile && (
+        <div className="p-5 border rounded-xl space-y-3">
+          <h2 className="text-xl font-semibold">{profile.name}</h2>
+          <p><strong>Field:</strong> {profile.field}</p>
+          <p><strong>Institution:</strong> {profile.institution}</p>
+          <p><strong>Bio:</strong> {profile.bio}</p>
+        </div>
+      )}
+    </div>
+  );
+}
