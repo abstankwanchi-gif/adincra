@@ -2,13 +2,29 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "../../lib/supabaseClient";
 
 export default function AuthCallback() {
   const router = useRouter();
 
   useEffect(() => {
-    // ✅ After Supabase processes login, redirect user
-    router.push("/dashboard");
+    async function handleAuth() {
+      console.log("Handling auth callback...");
+
+      const { error } = await supabase.auth.exchangeCodeForSession(
+        window.location.href
+      );
+
+      if (error) {
+        console.error("Auth callback error:", error);
+      } else {
+        console.log("User logged in successfully");
+      }
+
+      router.push("/dashboard");
+    }
+
+    handleAuth();
   }, [router]);
 
   return (
