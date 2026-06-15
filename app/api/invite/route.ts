@@ -10,7 +10,9 @@ export async function POST(req: Request) {
     );
 
     // ✅ Step 1: Invite user
-   const { data, error } = await supabase.auth.admin.inviteUserByEmail(email);
+   const { data, error } = await supabase.auth.admin.inviteUserByEmail(email, {
+  redirectTo: "https://adincra.app/auth/callback",
+});
 
 let user = data?.user;
 
