@@ -14,34 +14,54 @@ export default function DashboardPage() {
   }, []);
 
   async function loadProfile() {
-    console.log("Loading dashboard...");
+  const { data: userData } = await supabase.auth.getUser();
 
-    const { data: userData } = await supabase.auth.getUser();
+  if (!userData.user) {
+    router.push("/login");
+    return;
+  }
 
-    if (!userData.user) {
-      console.log("No user logged in");
-      router.push("/login");
+  const user = userData.user;
+  const userId = user.id;
+
+  // ✅ Try to fetch profile
+  let { data: profile, error } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("owner_id", userId)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Fetch error:", error);
+  }
+
+  // ✅ If no profile → create one automatically
+  if (!profile) {
+    console.log("Creating new profile...");
+
+    const { data: newProfile, error: insertError } = await supabase
+      .from("profiles")
+      .insert({
+        owner_id: userId,
+        name: user.email, // temporary
+        field: "",
+        institution: "",
+        bio: "",
+      })
+      .select()
+      .single();
+
+    if (insertError) {
+      console.error("Insert error:", insertError);
       return;
     }
 
-    const userId = userData.user.id;
-    console.log("User ID:", userId);
-
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("owner_id", userId)
-      .maybeSingle();
-
-    if (error) {
-      console.error("Profile fetch error:", error);
-    }
-
-    console.log("Profile data:", data);
-
-    setProfile(data);
-    setLoading(false);
+    profile = newProfile;
   }
+
+  setProfile(profile);
+  setLoading(false);
+}
 
   return (
     <div className="min-h-screen p-6 space-y-6">
