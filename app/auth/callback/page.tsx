@@ -21,7 +21,7 @@ export default function AuthCallback() {
         console.log("User logged in successfully");
       }
 
-      router.push("/dashboard");
+      router.push("/contact");
     }
 
     handleAuth();

@@ -1,164 +1,99 @@
 "use client";
 
-import { supabase } from "../lib/supabaseClient";
-import Navbar from "../components/Navbar";
-import AdinkraheneIcon from "../components/AdinkraheneIcon";
-import Link from "next/link";
 import { useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import { useRouter } from "next/navigation";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({
-    name: "",
-    field: "",
-    institution: "",
-    publications: "",
-    bio: "",
-    image: "",
-  });
+  const router = useRouter();
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const [name, setName] = useState("");
+  const [field, setField] = useState("");
+  const [institution, setInstitution] = useState("");
+  const [bio, setBio] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    setLoading(true);
+
+    // ✅ Get current user
+    const { data: userData } = await supabase.auth.getUser();
+
+    if (!userData.user) {
+      alert("User not logged in");
+      return;
+    }
+
+    const userId = userData.user.id;
+
+    // ✅ Update profile
+    const { error } = await supabase
+      .from("profiles")
+      .update({
+        name,
+        field,
+        institution,
+        bio,
+      })
+      .eq("owner_id", userId);
+
+    if (error) {
+      console.error(error);
+      alert("Failed to save profile");
+    } else {
+      alert("Profile saved!");
+      router.push("/dashboard"); // ✅ go to dashboard
+    }
+
+    setLoading(false);
   }
-
-  async function handleSubmit(e: React.FormEvent) {
-  e.preventDefault();
-
-  const { error } = await supabase.from("profiles").insert([
-    {
-      name: form.name,
-      field: form.field,
-      institution: form.institution,
-      publications: form.publications,
-      bio: form.bio,
-      image: form.image,
-      status: "pending",
-    },
-  ]);
-
-  if (error) {
-    console.error(error);
-    alert("Error submitting profile.");
-  } else {
-    alert("Profile submitted successfully!");
-
-    setForm({
-      name: "",
-      field: "",
-      institution: "",
-      publications: "",
-      bio: "",
-      image: "",
-    });
-  }
-}
-
-  <nav className="flex items-center justify-between py-4 border-b">
-
-  <Link href="/" className="flex items-center gap-2 cursor-pointer">
-      <AdinkraheneIcon />
-      <span className="font-bold text-lg tracking-wide">
-        ADINCRA
-      </span>
-  </Link>
-
-  <div className="flex gap-4 text-sm font-medium">
-    <Link href="/profile"><span>Profile</span></Link>
-    <Link href="/about"><span>About</span></Link>
-    <Link href="/contact"><span>Support</span></Link>
-  </div>
-
-</nav>
 
   return (
-  <div className="p-6 space-y-12 bg-white min-h-screen text-black">
-
-    {/* NAVBAR */}
-    <Navbar />
-
-    {/* PAGE CONTENT */}
-    <div className="max-w-xl mx-auto space-y-6">
-
-      <h1 className="text-3xl font-bold text-center">
-        Join ADINCRA
-      </h1>
-
-      <p className="text-center text-gray-700">
-        Submit your academic or professional profile to become part of the ADINCRA research network.
-      </p>
-
-      {/* FORM */}
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="min-h-screen flex items-center justify-center p-6">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-xl w-full space-y-4 border p-6 rounded-xl"
+      >
+        <h1 className="text-2xl font-bold">Complete Your Profile</h1>
 
         <input
-          type="text"
-          name="name"
           placeholder="Full Name"
-          value={form.name}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-lg"
+          className="w-full border p-3 rounded"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
         />
 
         <input
-          type="text"
-          name="field"
-          placeholder="Field of Work / Study"
-          value={form.field}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-lg"
-          required
+          placeholder="Field of Research"
+          className="w-full border p-3 rounded"
+          value={field}
+          onChange={(e) => setField(e.target.value)}
         />
 
         <input
-          type="text"
-          name="institution"
-          placeholder="Institutional Affiliation"
-          value={form.institution}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-lg"
-          required
+          placeholder="Institution"
+          className="w-full border p-3 rounded"
+          value={institution}
+          onChange={(e) => setInstitution(e.target.value)}
         />
 
         <textarea
-          name="publications"
-          placeholder="Publications / Projects"
-          value={form.publications}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-lg"
-          rows={3}
-        />
-
-        <textarea
-          name="bio"
-          placeholder="Research Interests / Bio"
-          value={form.bio}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-lg"
-          rows={4}
-          required
-        />
-
-        <input
-          type="text"
-          name="image"
-          placeholder="Profile Image URL"
-          value={form.image}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-lg"
+          placeholder="Short Bio"
+          className="w-full border p-3 rounded"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
         />
 
         <button
           type="submit"
-          className="w-full px-6 py-2 rounded-xl text-white font-medium hover:opacity-90 transition"
-          style={{ backgroundColor: "#C99700" }}
+          className="bg-black text-white px-4 py-3 rounded w-full"
+          disabled={loading}
         >
-          Submit Profile
+          {loading ? "Saving..." : "Save Profile"}
         </button>
-
       </form>
-
     </div>
-
-  </div>
-);
+  );
 }
