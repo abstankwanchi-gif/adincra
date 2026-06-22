@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/Navbar";
 
 export default function DashboardPage() {
   const [profile, setProfile] = useState<any>(null);
@@ -63,7 +64,10 @@ export default function DashboardPage() {
   setLoading(false);
 }
 
-  return (
+  return (    
+<>
+    <Navbar />
+
     <div className="min-h-screen p-6 space-y-6">
       <h1 className="text-3xl font-bold">User Dashboard</h1>
 
@@ -79,8 +83,9 @@ export default function DashboardPage() {
           <p><strong>Field:</strong> {profile.field}</p>
           <p><strong>Institution:</strong> {profile.institution}</p>
           <p><strong>Bio:</strong> {profile.bio}</p>
-        </div>
+        </div>      
       )}
     </div>
+    </>
   );
 }

@@ -8,23 +8,24 @@ export default function AuthCallback() {
   const router = useRouter();
 
   useEffect(() => {
-    async function handleAuth() {
-      console.log("Handling auth callback...");
+    async function handleSession() {
+      console.log("Checking session...");
 
-      const { error } = await supabase.auth.exchangeCodeForSession(
-        window.location.href
-      );
+      const { data, error } = await supabase.auth.getSession();
 
       if (error) {
-        console.error("Auth callback error:", error);
-      } else {
-        console.log("User logged in successfully");
+        console.error("Session error:", error);
       }
 
-      router.push("/contact");
+      if (data.session) {
+        console.log("User session found ✅");
+        router.push("/contact"); // ✅ go to profile setup
+      } else {
+        console.log("No session ❌");
+      }
     }
 
-    handleAuth();
+    handleSession();
   }, [router]);
 
   return (

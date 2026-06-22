@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/Navbar";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -29,14 +30,15 @@ export default function ContactPage() {
 
     // ✅ Update profile
     const { error } = await supabase
-      .from("profiles")
-      .update({
-        name,
-        field,
-        institution,
-        bio,
-      })
-      .eq("owner_id", userId);
+  .from("profiles")
+  .upsert({
+    owner_id: userId,
+    name,
+    field,
+    institution,
+    bio,
+    status: "approved",
+  });
 
     if (error) {
       console.error(error);
@@ -50,7 +52,9 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
+    <>
+        <Navbar />
+        <div className="min-h-screen flex items-center justify-center p-6">
       <form
         onSubmit={handleSubmit}
         className="max-w-xl w-full space-y-4 border p-6 rounded-xl"
@@ -95,5 +99,6 @@ export default function ContactPage() {
         </button>
       </form>
     </div>
+    </>
   );
 }

@@ -17,9 +17,9 @@ export default function ProfilePage() {
 
   <div className="flex gap-4 text-sm font-medium">
     <Link href="/"><span>Home</span></Link>
-    <Link href="/profile"><span>Profile</span></Link>
+    <Link href="/dashboard"><span>Dashboard</span></Link>
     <Link href="/about"><span>About</span></Link>
-    <Link href="/contact"><span>Support</span></Link>
+    <Link href="/contact"><span>Profile Setup</span></Link>
   </div>
 
 </nav>
