@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
 
 export default function AdminPage() {
@@ -131,7 +130,6 @@ async function handleLogout() {
 return (
   <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
-    <Navbar />
 
     <div className="flex justify-end">
   <button

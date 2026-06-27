@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
-import Navbar from "../components/Navbar";
 
 export default function ProfilesPage() {
   const [selectedField, setSelectedField] = useState("");
@@ -32,9 +31,7 @@ const institutions = [...new Set(profiles.map((p: any) => p.institution))];
   return (
     <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
-      <Navbar />
-
-      <h1 className="text-3xl font-bold text-center">
+            <h1 className="text-3xl font-bold text-center">
         ADINCRA Research Network
       </h1>
 

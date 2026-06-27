@@ -15,7 +15,6 @@ export default function Navbar() {
       </Link>
 
       <div className="flex gap-4 text-sm font-medium">
-        <Link href="/"><span>Home</span></Link>
         <Link href="/profile"><span>Profile</span></Link>
         <Link href="/about"><span>About</span></Link>
         <Link href="/contact"><span>Support</span></Link>

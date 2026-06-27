@@ -5,24 +5,7 @@ import Link from "next/link";
 export default function ProfilePage() {
   return (
     <div className="p-6 space-y-6">
-            {/* NAVBAR */}
-{/* NAVBAR */}
-<nav className="flex items-center justify-between py-4 border-b">
 
-  <Link href="/">
-    <span className="font-bold text-lg cursor-pointer">
-      ADINCRA
-    </span>
-  </Link>
-
-  <div className="flex gap-4 text-sm font-medium">
-    <Link href="/"><span>Home</span></Link>
-    <Link href="/dashboard"><span>Dashboard</span></Link>
-    <Link href="/about"><span>About</span></Link>
-    <Link href="/contact"><span>Profile Setup</span></Link>
-  </div>
-
-</nav>
       <h1 className="text-2xl font-bold">Profile</h1>
 
       <p>Dr. Scholar Name</p>
