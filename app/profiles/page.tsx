@@ -17,17 +17,17 @@ const institutions = [...new Set(profiles.map((p: any) => p.institution))];
   }, []);
 
   async function getProfiles() {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("status", "approved");
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("*")
+    .in("status", ["pending", "approved"]);
 
-    if (error) {
-      console.error(error);
-    } else {
-      setProfiles(data);
-    }
+  if (error) {
+    console.error(error);
+  } else {
+    setProfiles(data);
   }
+}
 
   return (
     <div className="p-6 space-y-12 bg-white min-h-screen text-black">

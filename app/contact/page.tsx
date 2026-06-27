@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import Navbar from "../components/Navbar";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -21,12 +20,29 @@ export default function ContactPage() {
     // ✅ Get current user
     const { data: userData } = await supabase.auth.getUser();
 
-    if (!userData.user) {
-      alert("User not logged in");
-      return;
-    }
+let userId: string | null = null;
 
-    const userId = userData.user.id;
+// ✅ First attempt
+if (userData?.user) {
+  userId = userData.user.id;
+}
+
+// ✅ Fallback: try session
+if (!userId) {
+  console.log("Retrying session...");
+
+  const { data: sessionData } = await supabase.auth.getSession();
+
+  if (sessionData.session) {
+    userId = sessionData.session.user.id;
+  }
+}
+
+// ❌ If still no user
+if (!userId) {
+  alert("User not logged in");
+  return;
+}
 
     // ✅ Update profile
     const { error } = await supabase
@@ -53,8 +69,7 @@ export default function ContactPage() {
 
   return (
     <>
-        <Navbar />
-        <div className="min-h-screen flex items-center justify-center p-6">
+                <div className="min-h-screen flex items-center justify-center p-6">
       <form
         onSubmit={handleSubmit}
         className="max-w-xl w-full space-y-4 border p-6 rounded-xl"

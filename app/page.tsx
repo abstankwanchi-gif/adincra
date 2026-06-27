@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "./components/Navbar";
 import AdinkraheneIcon from "./components/AdinkraheneIcon";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -37,7 +36,6 @@ export default function HomePage() {
     <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
       {/* NAVBAR */}
-<Navbar />
 
       {/* HERO */}
       
