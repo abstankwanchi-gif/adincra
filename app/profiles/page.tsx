@@ -19,11 +19,19 @@ const institutions = [...new Set(profiles.map((p: any) => p.institution))];
   const { data, error } = await supabase
     .from("profiles")
     .select("*")
-    .in("status", ["pending", "approved"]);
+    .eq("status", "approved");
 
   if (error) {
     console.error(error);
   } else {
+    console.log(
+  "Approved profiles:",
+  data?.map((p: any) => ({
+    id: p.id,
+    name: p.name,
+    status: p.status,
+  }))
+);
     setProfiles(data);
   }
 }
@@ -34,6 +42,9 @@ const institutions = [...new Set(profiles.map((p: any) => p.institution))];
             <h1 className="text-3xl font-bold text-center">
         ADINCRA Research Network
       </h1>
+      <p className="text-center">
+  Total profiles loaded: {profiles.length}
+</p>
 
       <div className="flex flex-col md:flex-row gap-3 justify-center mt-4">
 

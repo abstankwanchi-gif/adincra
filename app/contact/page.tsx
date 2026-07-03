@@ -40,7 +40,8 @@ if (!userId) {
 
 // ❌ If still no user
 if (!userId) {
-  alert("User not logged in");
+  alert("Please sign up or log in before creating your profile.");
+  router.push("/login");  // ✅ redirect to login page
   return;
 }
 
@@ -53,7 +54,7 @@ if (!userId) {
     field,
     institution,
     bio,
-    status: "approved",
+    status: "pending",
   });
 
     if (error) {

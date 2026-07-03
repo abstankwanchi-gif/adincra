@@ -26,40 +26,16 @@ export default function DashboardPage() {
 
   // ✅ Try to fetch profile
   let { data: profile, error } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("owner_id", userId)
-    .maybeSingle();
+  .from("profiles")
+  .select("*")
+  .eq("owner_id", userId)
+  .maybeSingle();
 
   if (error) {
     console.error("Fetch error:", error);
   }
 
-  // ✅ If no profile → create one automatically
-  if (!profile) {
-    console.log("Creating new profile...");
-
-    const { data: newProfile, error: insertError } = await supabase
-      .from("profiles")
-      .insert({
-        owner_id: userId,
-        name: user.email, // temporary
-        field: "",
-        institution: "",
-        bio: "",
-      })
-      .select()
-      .single();
-
-    if (insertError) {
-      console.error("Insert error:", insertError);
-      return;
-    }
-
-    profile = newProfile;
-  }
-
-  setProfile(profile);
+    setProfile(profile);
   setLoading(false);
 }
 

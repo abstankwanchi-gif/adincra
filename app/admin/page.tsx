@@ -12,25 +12,25 @@ export default function AdminPage() {
   checkUser();
 }, []);
 
-  async function getPendingProfiles() {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("status", "pending");
+async function getPendingProfiles() {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("status", "pending");
 
-    if (error) {
-      console.error(error);
-    } else {
-      setProfiles(data);
-    }
+  if (error) {
+    console.error(error);
+  } else {
+    console.log("Pending profiles:", data);
+    setProfiles(data);
   }
-
+}
   async function checkUser() {
   const { data: userData } = await supabase.auth.getUser();
 
   // ✅ Step 1: Not logged in
   if (!userData.user) {
-    router.push("/login");
+    router.push("/login") // user login page only
     return;
   }
 
@@ -124,7 +124,8 @@ async function handleLogout() {
     console.error(error);
   }
 
-  router.push("/login");
+  router.push("/login") // user login page only
+
 }
 
 return (

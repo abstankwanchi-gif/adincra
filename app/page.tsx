@@ -58,7 +58,7 @@ export default function HomePage() {
     African Diasporic and Interdisciplinary Network for Collaborative Research and Action — a platform connecting knowledge, community, and transformation.
   </p>
 
-  <Link href="/contact">
+  <Link href="/signup">
     <motion.button
       whileHover={{ scale: 1.05, y: -4 }}
       whileTap={{ scale: 0.97 }}
@@ -169,7 +169,7 @@ export default function HomePage() {
     Join us as a donor, volunteer, or partner in building a global research network grounded in collaboration and knowledge.
   </p>
 
-  <Link href="/contact">
+  <Link href="/signup">
     <motion.button
       whileHover={{ scale: 1.05, y: -4 }}
       whileTap={{ scale: 0.97 }}
