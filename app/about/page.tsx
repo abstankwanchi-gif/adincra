@@ -6,23 +6,7 @@ export default function AboutPage() {
   return (    
         <div className="p-6 space-y-6 max-w-3xl mx-auto">
             {/* NAVBAR */}
-{/* NAVBAR */}
-<nav className="flex items-center justify-between py-4 border-b">
 
-  <Link href="/">
-    <span className="font-bold text-lg cursor-pointer">
-      ADINCRA
-    </span>
-  </Link>
-
-  <div className="flex gap-4 text-sm font-medium">
-    <Link href="/"><span>Home</span></Link>
-    <Link href="/profile"><span>Profile</span></Link>
-    <Link href="/about"><span>About</span></Link>
-    <Link href="/contact"><span>Support</span></Link>
-  </div>
-
-</nav>
       <h1 className="text-3xl font-bold">About ADINCRA</h1>
 
       <p>
