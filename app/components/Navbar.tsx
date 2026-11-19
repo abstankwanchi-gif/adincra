@@ -15,6 +15,10 @@ export default function Navbar() {
       </Link>
 
       <div className="flex gap-8 text-sm font-semibold">
+        <Link href="/profiles">
+    <span>Directory</span>
+  </Link>
+
   <Link href="/about">
     <span>About</span>
   </Link>
