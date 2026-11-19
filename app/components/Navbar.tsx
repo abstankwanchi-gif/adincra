@@ -9,12 +9,12 @@ export default function Navbar() {
 
       <Link href="/" className="flex items-center gap-2 cursor-pointer">
         <AdinkraheneIcon />
-        <span className="font-bold text-lg tracking-wide">
+        <span className="font-bold text-base md:text-lg tracking-wide">
           ADINCRA
         </span>
       </Link>
 
-      <div className="flex gap-8 text-sm font-semibold">
+      <div className="flex gap-4 text-sm font-semibold">
         <Link href="/profiles">
     <span>Directory</span>
   </Link>
@@ -28,7 +28,7 @@ export default function Navbar() {
   </Link>
 
   <Link href="/signup">
-    <span>Join ADINCRA</span>
+    <span>Join</span>
   </Link>
 </div>
     </nav>
