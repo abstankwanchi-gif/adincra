@@ -40,10 +40,10 @@ const institutions = [...new Set(profiles.map((p: any) => p.institution))];
     <div className="p-6 space-y-12 bg-white min-h-screen text-black">
 
             <h1 className="text-3xl font-bold text-center">
-        ADINCRA Research Network
+        ADINCRA Expertise Directory
       </h1>
-      <p className="text-center">
-  Total profiles loaded: {profiles.length}
+      <p className="text-center text-gray-600">
+  {profiles.length} Researchers and Scholars currently listed in the ADINCRA Directory
 </p>
 
       <div className="flex flex-col md:flex-row gap-3 justify-center mt-4">
