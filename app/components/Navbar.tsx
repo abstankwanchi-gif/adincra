@@ -15,11 +15,18 @@ export default function Navbar() {
       </Link>
 
       <div className="flex gap-4 text-sm font-medium">
-        <Link href="/profile"><span>Profile</span></Link>
-        <Link href="/about"><span>About</span></Link>
-        <Link href="/signup"><span>Join</span></Link>
-      </div>
+  <Link href="/about">
+    <span>About</span>
+  </Link>
 
+  <Link href="/login">
+    <span>Sign In</span>
+  </Link>
+
+  <Link href="/signup">
+    <span>Join ADINCRA</span>
+  </Link>
+</div>
     </nav>
   );
 }
